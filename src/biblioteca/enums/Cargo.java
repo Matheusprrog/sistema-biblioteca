@@ -1,4 +1,9 @@
 package biblioteca.enums;
 
-public enum Cargo {
-}
+    public enum Cargo {
+
+        ADMINISTRADOR,
+        COMUM;
+    }
+
+

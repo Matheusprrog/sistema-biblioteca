@@ -1,6 +1,15 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import biblioteca.service.Biblioteca;
+import biblioteca.service.loginService;
+import java.util.Scanner;
 void main() {
 
-    glivro();
+    Scanner scanner = new Scanner(System.in);
+    Biblioteca biblioteca = new Biblioteca();
+
+
+    loginService login = new loginService(biblioteca, scanner);
+    login.iniciar();
+
+    scanner.close();
+
 }
