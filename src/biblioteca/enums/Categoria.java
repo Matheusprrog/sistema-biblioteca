@@ -6,6 +6,4 @@ public enum Categoria {
     FICCAO_CIENTIFICA,
     ROMANCE,
     TERROR;
-
-
 }

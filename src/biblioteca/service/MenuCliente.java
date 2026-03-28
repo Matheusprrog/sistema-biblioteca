@@ -15,66 +15,77 @@ public class MenuCliente {
         this.biblioteca = biblioteca;
         this.usuarioLogado = usuarioLogado;
     }
-    public void iniciar(){
+
+    public void iniciar() {
 
 
         boolean rodando = true;
 
         while (rodando) {
 
-            IO.println("==================================");
-            IO.println("        ESCOLHA UMA CATEGORIA     ");
-            IO.println("==================================");
-            IO.println("[1] Comedia");
-            IO.println("[2] Drama");
-            IO.println("[3] Ficção Cientifica");
-            IO.println("[4] Romance");
-            IO.println("[5] Terror");
-            IO.println("[6] Voltar ao login");
-            IO.println("");
-            IO.println("Escolha: ");
+            System.out.println("==================================");
+            System.out.println("        ESCOLHA UMA CATEGORIA     ");
+            System.out.println("==================================");
+            System.out.println("[1] Comedia");
+            System.out.println("[2] Drama");
+            System.out.println("[3] Ficção Cientifica");
+            System.out.println("[4] Romance");
+            System.out.println("[5] Terror");
+            System.out.println("[6] Voltar ao login");
+            System.out.println("");
+            System.out.println("Escolha: ");
 
             int opcao = scanner.nextInt();
             scanner.nextLine();
 
 
-
-            switch (opcao){
-                case 1: listarLivrosCategoria(Categoria.COMEDIA); break;
-                case 2: listarLivrosCategoria(Categoria.DRAMA); break;
-                case 3: listarLivrosCategoria(Categoria.FICCAO_CIENTIFICA); break;
-                case 4: listarLivrosCategoria(Categoria.ROMANCE); break;
-                case 5: listarLivrosCategoria(Categoria.TERROR); break;
-                case 6: rodando = false; break;
-                default: IO.println("Opção invalida");
+            switch (opcao) {
+                case 1:
+                    listarLivrosCategoria(Categoria.COMEDIA);
+                    break;
+                case 2:
+                    listarLivrosCategoria(Categoria.DRAMA);
+                    break;
+                case 3:
+                    listarLivrosCategoria(Categoria.FICCAO_CIENTIFICA);
+                    break;
+                case 4:
+                    listarLivrosCategoria(Categoria.ROMANCE);
+                    break;
+                case 5:
+                    listarLivrosCategoria(Categoria.TERROR);
+                    break;
+                case 6:
+                    rodando = false;
+                    break;
+                default:
+                    System.out.println("Opção invalida");
             }
         }
     }
 
 
-
     //função para exibir os livros por categoria selecionada
-    private void listarLivrosCategoria(Categoria categoria){
+    private void listarLivrosCategoria(Categoria categoria) {
 
-        IO.println("==================================");
-        IO.println("           LIVROS                 ");
-        IO.println("==================================");
-
+        System.out.println("==================================");
+        System.out.println("           LIVROS                 ");
+        System.out.println("==================================");
 
 
         //for para exibir os livros
-        for(Livro l : biblioteca.livros){
+        for (Livro l : biblioteca.livros) {
 
-            if(l.categoria == categoria && l.disponivel){
-                IO.println("["+ l.id +"]" + l.titulo + "-" + l.autor);
+            if (l.categoria == categoria && l.disponivel) {
+                System.out.println("[" + l.id + "]" + l.titulo + "-" + l.autor);
             }
         }
-        IO.println("=========================");
-        IO.println("Digite o ID do livro (0 para retornar) ");
+        System.out.println("=========================");
+        System.out.println("Digite o ID do livro (0 para retornar) ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        if(id== 0) {
+        if (id == 0) {
             return;
         }
 
@@ -82,56 +93,54 @@ public class MenuCliente {
 
     }
 
-    private void selecionarLivro(int id){
+    private void selecionarLivro(int id) {
 
-    for(Livro l : biblioteca.livros) {
-        if (l.id == id) {
+        for (Livro l : biblioteca.livros) {
+            if (l.id == id) {
 
-            if (!l.disponivel) {
+                if (!l.disponivel) {
 
-                IO.println("Livro não Disponivel");
+                    System.out.println("Livro não Disponivel");
+                    return;
+                }
+
+                System.out.println("==================================");
+                System.out.println("Título: " + l.titulo);
+                System.out.println("Autor: " + l.autor);
+                System.out.println("Descrição: " + l.descricaoLivro);
+                System.out.println("Lançamento: " + l.dataLancamento);
+                System.out.println("==================================");
+                System.out.println("[1] Confirmar empréstimo");
+                System.out.println("[2] Voltar");
+                System.out.print("Escolha: ");
+
+                int escolha = scanner.nextInt();
+                scanner.nextLine();
+
+                if (escolha == 1) {
+                    confirmaEmprestimo(l);
+                }
                 return;
             }
-
-            IO.println("==================================");
-            IO.println("Título: " + l.titulo);
-            IO.println("Autor: " + l.autor);
-            IO.println("Descrição: " + l.descricao_livro);
-            IO.println("Lançamento: " + l.data_lancamento);
-            IO.println("==================================");
-            IO.println("[1] Confirmar empréstimo");
-            IO.println("[2] Voltar");
-            IO.print("Escolha: ");
-
-            int escolha = scanner.nextInt();
-            scanner.nextLine();
-
-            if (escolha == 1) {
-                confirmaEmprestimo(l);
-            }
-            return;
         }
-      }
-        IO.println("Livro não encontrado ");
+        System.out.println("Livro não encontrado ");
     }
 
-        private void confirmaEmprestimo(Livro livro){
+    private void confirmaEmprestimo(Livro livro) {
 
-            IO.println("Digite a data de devolução (dd/mm/aa)");
-            String dataDevolucao = scanner.nextLine();
+        System.out.println("Digite a data de devolução (dd/mm/aa)");
+        String dataDevolucao = scanner.nextLine();
 
-            livro.disponivel = false;
+        livro.disponivel = false;
 
-            IO.println("==================================");
-            IO.println("       EMPRÉSTIMO CONFIRMADO!     ");
-            IO.println("==================================");
-            IO.println("Usuário: " + usuarioLogado.nome);
-            IO.println("Livro: " + livro.titulo);
-            IO.println("Data de devolução: " + dataDevolucao);
-            IO.println("==================================");
-        }
-
-
+        System.out.println("==================================");
+        System.out.println("       EMPRÉSTIMO CONFIRMADO!     ");
+        System.out.println("==================================");
+        System.out.println("Usuário: " + usuarioLogado.nome);
+        System.out.println("Livro: " + livro.titulo);
+        System.out.println("Data de devolução: " + dataDevolucao);
+        System.out.println("==================================");
+    }
 
 
 }

@@ -44,32 +44,30 @@ public class Biblioteca {
 
     public void listarLivros(){
 
-        IO.println("===========================");
-        IO.println("    LISTA DE LIVROS ");
-        IO.println("==============================");
+        System.out.println("===========================");
+        System.out.println("    LISTA DE LIVROS ");
+        System.out.println("==============================");
 
         for (Livro l: livros){
 
             String disponibilidade = l.disponivel ? "Disponivel" : "Indisponivel";
-            IO.println("[" + l.id + "] " + l.titulo + " - " + l.autor + " | " + disponibilidade);
+            System.out.println("[" + l.id + "] " + l.titulo + " - " + l.autor + " | " + disponibilidade);
 
         }
 
     }
 
     public void listarUsuario(){
-        IO.println("===========================");
-        IO.println("    LISTA DE USUARIOS ");
-        IO.println("==============================");
+        System.out.println("===========================");
+        System.out.println("    LISTA DE USUARIOS ");
+        System.out.println("==============================");
 
         for (Usuario l: usuarios){
 
 
-            IO.println("nome: " + l.nome + " - " + l.cargo);
+            System.out.println("nome: " + l.nome + " - " + l.cargo);
 
         }}
 
 
 }
-
-

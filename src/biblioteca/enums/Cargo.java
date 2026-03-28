@@ -5,5 +5,3 @@ package biblioteca.enums;
         ADMINISTRADOR,
         COMUM;
     }
-
-

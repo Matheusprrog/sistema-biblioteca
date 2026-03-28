@@ -22,15 +22,15 @@ public class loginService {
     public void iniciar() {
         boolean rodando = true;
         while (rodando) {
-            IO.println("==================================");
-            IO.println("    BEM VINDO A BIBLIOTECA  ");
-            IO.println("==================================");
-            IO.println("");
-            IO.println("[1] Login");
-            IO.println("[2] Sair ");
-            IO.println(" ");
+            System.out.println("==================================");
+            System.out.println("    BEM VINDO A BIBLIOTECA  ");
+            System.out.println("==================================");
+            System.out.println("");
+            System.out.println("[1] Login");
+            System.out.println("[2] Sair ");
+            System.out.println(" ");
 
-            IO.print("Escolha: ");
+            System.out.print("Escolha: ");
             int opcao = scanner.nextInt();
             scanner.nextLine();
 
@@ -38,10 +38,10 @@ public class loginService {
                 fazerLogin();
 
             } else if (opcao == 2) {
-                IO.println("Sistema Encerrado!");
+                System.out.println("Sistema Encerrado!");
                 rodando = false;
             } else {
-                IO.println("Opção Invalida! tente novamente");
+                System.out.println("Opção Invalida! tente novamente");
             }
         }
     }
@@ -49,14 +49,14 @@ public class loginService {
            //metodo de validação de login
 
             public void fazerLogin () {
-                IO.print("Nome: ");
+                System.out.print("Nome: ");
                 String nome = scanner.nextLine();
-                IO.print("senha: ");
+                System.out.print("senha: ");
                 String senha = scanner.nextLine();
 
                 for (Usuario u : biblioteca.usuarios) {
                     if (u.nome.equals(nome) && u.senha.equals(senha)) {
-                        IO.println("Bem vindo " + u.nome + "!");
+                        System.out.println("Bem vindo " + u.nome + "!");
 
 
 
@@ -73,13 +73,7 @@ public class loginService {
                     }
                 }
 
-        IO.println("Nome ou senha incorretos! Tente novamente.");
+        System.out.println("Nome ou senha incorretos! Tente novamente.");
             }
 
     }
-
-
-
-
-
-

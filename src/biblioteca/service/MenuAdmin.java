@@ -21,30 +21,30 @@ public class MenuAdmin {
 
     public void iniciar() {
 
-        IO.println("=====MENU ADIMINISTRADOR======");
-        IO.println("");
-        IO.println("");
+        System.out.println("=====MENU ADIMINISTRADOR======");
+        System.out.println("");
+        System.out.println("");
 
 
         boolean rodando = true;
         while (rodando) {
 
 
-            IO.println("[1] Adcionar Livro");
-            IO.println("[2] Adcionar Usuario");
-            IO.println("[3] Remover Livro");
-            IO.println("[4] Remover Usuario");
-            IO.println("[5] Voltar ao Login");
+            System.out.println("[1] Adicionar Livro");
+            System.out.println("[2] adicionar Usuario");
+            System.out.println("[3] Remover Livro");
+            System.out.println("[4] Remover Usuario");
+            System.out.println("[5] Voltar ao Login");
 
-            IO.println("Escolha: ");
+            System.out.println("Escolha: ");
             int opcao = scanner.nextInt();
             scanner.nextLine();
 
             if (opcao == 1) {
-                adcionarLivro();
+                adicionarLivro();
 
             } else if (opcao == 2) {
-                adcionarUsuario();
+                adicionarUsuario();
 
             } else if (opcao == 3) {
                 deletarLivro();
@@ -57,7 +57,7 @@ public class MenuAdmin {
 
             } else {
 
-                IO.println("Opção Invalida! tente novamente");
+                System.out.println("Opção Invalida! tente novamente");
             }
 
         }
@@ -65,27 +65,27 @@ public class MenuAdmin {
 
     }
 
-    public void adcionarLivro() {
+    public void adicionarLivro() {
 
-        IO.print("Titulo: ");
+        System.out.print("Titulo: ");
         String titulo = scanner.nextLine();
 
-        IO.print("Autor: ");
+        System.out.print("Autor: ");
         String autor = scanner.nextLine();
 
-        IO.print("Descrição: ");
+        System.out.print("Descrição: ");
         String descricao = scanner.nextLine();
 
-        IO.print("Data de Lançamento: ");
+        System.out.print("Data de Lançamento: ");
         String dataLancamento = scanner.nextLine();
 
-        IO.println("Escolha a categoria:");
-        IO.println("[1] Comédia");
-        IO.println("[2] Drama");
-        IO.println("[3] Ficção Científica");
-        IO.println("[4] Romance");
-        IO.println("[5] Terror");
-        IO.print("Categoria: ");
+        System.out.println("Escolha a categoria:");
+        System.out.println("[1] Comédia");
+        System.out.println("[2] Drama");
+        System.out.println("[3] Ficção Científica");
+        System.out.println("[4] Romance");
+        System.out.println("[5] Terror");
+        System.out.print("Categoria: ");
         int opcaocategoria = scanner.nextInt();
         scanner.nextLine();
 
@@ -99,7 +99,7 @@ public class MenuAdmin {
             case 4: categoria = Categoria.ROMANCE; break;
             case 5: categoria = Categoria.TERROR; break;
             default:
-                IO.println("Categoria invalida!");
+                System.out.println("Categoria invalida!");
                 return;
 
 
@@ -110,24 +110,24 @@ public class MenuAdmin {
         Livro novolivro = new Livro(novoID, titulo, autor, descricao, dataLancamento,true, categoria);
         biblioteca.livros.add(novolivro);
 
-        IO.println("Livro adicionado com sucesso!");
+        System.out.println("Livro adicionado com sucesso!");
 
 
 
 
     }
 
-    public void adcionarUsuario() {
+    public void adicionarUsuario() {
 
-        IO.println("Nome: ");
+        System.out.println("Nome: ");
         String nome = scanner.nextLine();
 
-        IO.println("senha: ");
+        System.out.println("senha: ");
         String senha = scanner.nextLine();
 
-        IO.println("Escolha o cargo:");
-        IO.println("[1] Administrador");
-        IO.println("[2] Usuario comum");
+        System.out.println("Escolha o cargo:");
+        System.out.println("[1] Administrador");
+        System.out.println("[2] Usuario comum");
 
         int opnCargo = scanner.nextInt();
         scanner.nextLine();
@@ -142,14 +142,14 @@ public class MenuAdmin {
             case 2: cargo = Cargo.COMUM; break;
 
             default:
-                IO.println("Cargo invalido");
+                System.out.println("Cargo invalido");
                 return;
 
         }
         Usuario novoUsuario = new Usuario(nome, senha, cargo);
         biblioteca.usuarios.add(novoUsuario);
 
-        IO.println("Novo Usuario cadastrado com sucesso!");
+        System.out.println("Novo Usuario cadastrado com sucesso!");
 
 
 
@@ -158,7 +158,7 @@ public class MenuAdmin {
     public void deletarLivro() {
         biblioteca.listarLivros();
 
-        IO.println("Digite o ID do livro que deseja remover");
+        System.out.println("Digite o ID do livro que deseja remover");
         int id = scanner.nextInt();
         scanner.nextLine();
 
@@ -166,14 +166,14 @@ public class MenuAdmin {
 
             if (l.id == id) {
                 biblioteca.livros.remove(l);
-                IO.println("Livro removido com sucesso!");
-                IO.println("");
-                IO.println("");
+                System.out.println("Livro removido com sucesso!");
+                System.out.println("");
+                System.out.println("");
 
                 return;
             }
         }
-        IO.println("Livro não encontrado !");
+        System.out.println("Livro não encontrado !");
 
     }
 
@@ -181,14 +181,14 @@ public class MenuAdmin {
     public void deletarUsuario() {
         biblioteca.listarUsuario();
 
-        IO.println("Digite o nome do usuario que deseja remover");
+        System.out.println("Digite o nome do usuario que deseja remover");
         String nome = scanner.nextLine();
 
 
         for(Usuario u : biblioteca.usuarios){
             if(u.nome.equals(nome)){
                 biblioteca.usuarios.remove(u);
-                IO.println("Usuario removido com sucesso!");
+                System.out.println("Usuario removido com sucesso!");
                 return;
 
             }
